@@ -1,0 +1,29 @@
+{
+  "name": "notelit",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "_",
+  "main": "server.js",
+  "scripts": {
+    "test": "_"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liamarguedas/NoteLit.git"
+  },
+  "keywords": [
+    "_"
+  ],
+  "author": "Liam Arguedas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/liamarguedas/NoteLit/issues"
+  },
+  "homepage": "https://github.com/liamarguedas/NoteLit#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "nodemon": "^3.1.2",
+    "pg": "^8.11.5"
+  }
+}
