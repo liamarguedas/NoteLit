@@ -6,7 +6,7 @@ const app = express();
 const port = 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(express.static("public"));
+app.use(express.static("public"));
 
 const db = new pg.Client({
   user: "postgres",
@@ -19,8 +19,9 @@ const db = new pg.Client({
 db.connect();
 
 app.get("/", async (req, res) => {
-  const resultado = await db.query("SELECT * FROM notes");
-  res.render("./index.ejs");
+  const notes = await db.query("SELECT * FROM notes");
+  console.log(notes.rows);
+  res.render("./index.ejs", { notes: notes.rows });
 });
 
 app.listen(port, () => {
