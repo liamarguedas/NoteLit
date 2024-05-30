@@ -24,6 +24,10 @@ app.get("/", async (req, res) => {
   res.render("./index.ejs", { notes: notes.rows });
 });
 
+app.post("/new", (req, res) => {
+  res.render("/");
+});
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
