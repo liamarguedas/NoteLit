@@ -1,6 +1,15 @@
+<%- include('partials/header.ejs') -%>
+
+
+
    <div class="main-div">
+    
         <div class="note-container">
 
+          <form class="edit" action="/edit" method="post">
+            <button class="btn"> Add new </button>
+          </form>
+          
           <% for(let note of notes){ %>
 
             <div class="note">
@@ -9,6 +18,15 @@
                 <h3> <%= note.note %> </h3>
                 <h4> LIBRO / AUTOR </h4>
                 <H5> <%= note.date %></H5>
+             <div class="actions"> 
+              <form class="edit" action="/edit" method="post">
+                <button class="btn"> Edit </button>
+              </form>
+              <form class="edit" action="/edit" method="post">
+                <button class="btn"> Delete </button>
+              </form>
+              </div>
+
 
 
             </div>
