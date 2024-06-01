@@ -1,35 +1,29 @@
 <%- include('partials/header.ejs') -%>
 
+<div class="main-div">
+  <div class="note-container">
+    <form class="edit" action="/add" method="post">
+      <button class="btn"> Add new </button>
+    </form>
 
-
-   <div class="main-div">
-    
-        <div class="note-container">
-
+    <% for(let note of notes){ %>
+      <div class="note">
+        <h1> <%= note.title %> </h1>
+        <h3> <%= note.note %> </h3>
+        <h4> LIBRO / AUTOR </h4>
+        <h5> <%= note.date %> </h5>
+        <div class="actions">
           <form class="edit" action="/edit" method="post">
-            <button class="btn"> Add new </button>
+          <input type="hidden" name="noteId" value="<%= note.noteid %>">
+            <button class="btn"> Edit </button>
           </form>
-          
-          <% for(let note of notes){ %>
 
-            <div class="note">
-
-                <h1> <%= note.title %> </h1>
-                <h3> <%= note.note %> </h3>
-                <h4> LIBRO / AUTOR </h4>
-                <H5> <%= note.date %></H5>
-             <div class="actions"> 
-              <form class="edit" action="/edit" method="post">
-                <button class="btn"> Edit </button>
-              </form>
-              <form class="edit" action="/edit" method="post">
-                <button class="btn"> Delete </button>
-              </form>
-              </div>
-
-
-
-            </div>
-            <% } %>
+          <form class="delete" action="/delete" method="post">
+            <input type="hidden" name="noteId" value="<%= note.noteid %>">
+            <button class="btn"> Delete </button>
+          </form>
         </div>
-    </div>
+      </div>
+    <% } %>
+  </div>
+</div>

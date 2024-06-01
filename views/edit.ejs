@@ -1,0 +1,9 @@
+
+<div class="actions">
+  <a href="/edit/<%= note.noteid %>" class="btn"> Edit </a>
+  
+  <form class="delete" action="/delete" method="post">
+    <input type="hidden" name="noteId" value="<%= note.noteid %>">
+    <button class="btn"> Delete </button>
+  </form>
+</div>

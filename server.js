@@ -17,15 +17,17 @@ const db = new pg.Client({
 });
 
 db.connect();
+let notes = [];
 
 app.get("/", async (req, res) => {
-  const notes = await db.query("SELECT * FROM notes");
-  console.log(notes.rows);
+  notes = await db.query("SELECT * FROM notes");
   res.render("./index.ejs", { notes: notes.rows });
+  console.log(notes.rows);
 });
 
-app.post("/new", (req, res) => {
-  res.render("/");
+app.post("/edit", (req, res) => {
+  const noteId = parseInt(req.body.noteId);
+  console.log(noteId);
 });
 
 app.listen(port, () => {
