@@ -17,7 +17,7 @@ const db = new pg.Client({
 });
 
 db.connect();
-let notes = [];
+let notes = new Array();
 
 app.get("/", async (req, res) => {
   notes = await db.query("SELECT * FROM notes");
