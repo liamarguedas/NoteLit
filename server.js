@@ -22,12 +22,21 @@ let notes = new Array();
 app.get("/", async (req, res) => {
   notes = await db.query("SELECT * FROM notes");
   res.render("./index.ejs", { notes: notes.rows });
-  console.log(notes.rows);
 });
 
-app.post("/edit", (req, res) => {
+app.post("/edit", async (req, res) => {
   const noteId = parseInt(req.body.noteId);
-  console.log(noteId);
+  notes = await db.query("SELECT * FROM notes WHERE noteid = $1", [noteId]);
+  res.render("./edit.ejs", { notes: notes.rows[0] });
+});
+
+app.post("/edit/:noteId", async (req, res) => {
+  const queryValues = [req.body.note, req.body.title, req.body.book, noteId];
+  const responde = db.query(
+    "UPDATE notes SET note = $1, title = $2, bookid = $3 WHERE noteid = $4",
+  );
+  console.log(response);
+  res.redirect("/");
 });
 
 app.listen(port, () => {

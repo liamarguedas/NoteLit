@@ -1,9 +1,16 @@
-
-<div class="actions">
-  <a href="/edit/<%= note.noteid %>" class="btn"> Edit </a>
-  
-  <form class="delete" action="/delete" method="post">
-    <input type="hidden" name="noteId" value="<%= note.noteid %>">
-    <button class="btn"> Delete </button>
-  </form>
-</div>
+<form action="/edit/<%= notes.noteid %>" method="post">
+  <h1> <$= notes $> </h1>
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" id="title" name="title" value="<%= notes.title %>">
+  </div>
+    <div class="form-group">
+    <label for="note">Note</label>
+    <textarea id="note" name="note"><%= notes.note %></textarea>
+  </div>
+  <div class="form-group">
+    <label for="book">Book</label>
+    <input type="text" id="book" name="book" value="<%= notes.bookid %>">
+  </div>
+ <button type="submit" class="btn">Update</button>
+ </form>
