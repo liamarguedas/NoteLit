@@ -31,11 +31,22 @@ app.post("/edit", async (req, res) => {
 });
 
 app.post("/edit/:noteId", async (req, res) => {
-  const queryValues = [req.body.note, req.body.title, req.body.book, noteId];
+  const queryValues = [
+    req.body.note,
+    req.body.title,
+    req.body.book,
+    req.params.noteId,
+  ];
   const responde = db.query(
     "UPDATE notes SET note = $1, title = $2, bookid = $3 WHERE noteid = $4",
+    queryValues,
   );
-  console.log(response);
+  res.redirect("/");
+});
+
+app.post("/delete", (req, res) => {
+  const noteToDelete = [req.body.noteId];
+  db.query("DELETE FROM notes WHERE noteid = $1", noteToDelete);
   res.redirect("/");
 });
 
