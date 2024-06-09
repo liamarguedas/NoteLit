@@ -54,6 +54,10 @@ app.post("/add", (req, res) => {
   res.render("./add.ejs");
 });
 
+app.post("/add-new", (req, res) => {
+  console.log(req.body);
+});
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
