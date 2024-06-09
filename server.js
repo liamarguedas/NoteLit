@@ -21,6 +21,7 @@ let notes = new Array();
 
 app.get("/", async (req, res) => {
   notes = await db.query("SELECT * FROM notes");
+  console.log(notes);
   res.render("./index.ejs", { notes: notes.rows });
 });
 
@@ -55,7 +56,13 @@ app.post("/add", (req, res) => {
 });
 
 app.post("/add-new", (req, res) => {
-  console.log(req.body);
+  const title = req.body.title;
+  const note = req.body.note;
+  const book = req.body.book;
+
+  // bookid, note, date, title, noteid
+
+  // db.query("INSERT INTO notes ()");
 });
 
 app.listen(port, () => {
